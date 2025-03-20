@@ -289,12 +289,12 @@ body {
 
 .secondary-button {
     background: transparent;
-    color: #3498db;
+    color: #8e9294;
     border: 2px solid #3498db;
 }
 
 .secondary-button:hover {
-    background: #3498db;
+    background: #0c1216;
     color: white;
 }
 
@@ -1103,4 +1103,105 @@ footer {
     .doctor-info {
         padding: 1.5rem;
     }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+body.dark-mode .navbar {
+  background: rgba(30, 30, 30, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .logo, 
+body.dark-mode .nav-links a {
+  color: #f0f0f0;
+}
+
+body.dark-mode .hamburger div {
+  background-color: #f0f0f0;
+}
+
+body.dark-mode .feature-card,
+body.dark-mode .benefit-card,
+body.dark-mode .contact-form,
+body.dark-mode .doctor-card {
+  background: #2c2c2c;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  color: #f0f0f0;
+}
+
+body.dark-mode .feature-card h3,
+body.dark-mode .benefit-card h3,
+body.dark-mode .doctor-info h3,
+body.dark-mode .contact-form h2,
+body.dark-mode h2 {
+  color: #3498db;
+}
+
+body.dark-mode .form-group label {
+  color: #f0f0f0;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+  background-color: #333;
+  border-color: #444;
+  color: #f0f0f0;
+}
+
+body.dark-mode .contact-item .icon,
+body.dark-mode .feature-card .icon,
+body.dark-mode .benefit-card .icon {
+  color: #3498db;
+}
+
+body.dark-mode .secondary-button {
+  color: #3498db;
+  border-color: #3498db;
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  margin-left: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+body.dark-mode .theme-toggle .sun-icon {
+  display: block;
+}
+
+body.dark-mode .theme-toggle .moon-icon {
+  display: none;
+}
+
+.theme-toggle .sun-icon {
+  display: none;
+}
+
+.theme-toggle .moon-icon {
+  display: block;
 } 

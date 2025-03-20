@@ -130,6 +130,39 @@ document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
+// Dark mode functionality
+function initThemeToggle() {
+    // Check for saved theme preference or use preferred color scheme
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Apply saved theme or use system preference
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.body.classList.add('dark-mode');
+    }
+    
+    // Get all theme toggle buttons
+    const toggleBtns = document.querySelectorAll('.theme-toggle');
+    
+    // Add click event to all toggle buttons
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', toggleTheme);
+    });
+}
+
+function toggleTheme() {
+    // Toggle dark mode class
+    document.body.classList.toggle('dark-mode');
+    
+    // Save preference to localStorage
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+// Initialize theme when DOM content loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize AOS
     AOS.init({
@@ -137,42 +170,49 @@ document.addEventListener('DOMContentLoaded', function() {
         easing: 'ease-in-out',
         once: true
     });
-
+    
+    // Initialize theme toggle
+    initThemeToggle();
+    
     // Mobile menu functionality
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const links = document.querySelectorAll('.nav-links li');
 
-    hamburger.addEventListener('click', () => {
-        // Toggle navigation
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('active');
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            // Toggle navigation
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
 
-        // Animate links
-        links.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
+            // Animate links
+            links.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
         });
-    });
+    }
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+        if (hamburger && navLinks && !hamburger.contains(e.target) && !navLinks.contains(e.target)) {
             navLinks.classList.remove('active');
             hamburger.classList.remove('active');
         }
     });
 
     // Close mobile menu when clicking a link
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
+    if (links) {
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
         });
-    });
+    }
 });
 
 // Add animation keyframes to the document
@@ -201,4 +241,8 @@ style.textContent = `
     transform: rotate(45deg) translate(-5px, -6px);
 }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+
+const darklight = document.getElementById("darkmode-lightmode")
+
+const currentcolor = document.body.background;
