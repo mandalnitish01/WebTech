@@ -71,23 +71,23 @@ window.addEventListener('scroll', () => {
 });
 
 // Form submission handling
-const contactForm = document.querySelector('.contact-form form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+// const contactForm = document.querySelector('.contact-form form');
+// if (contactForm) {
+//     contactForm.addEventListener('submit', function(e) {
+//         e.preventDefault();
         
-        // Get form data
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
+//         // Get form data
+//         const formData = new FormData(this);
+//         const data = Object.fromEntries(formData);
         
-        // Here you would typically send the data to a server
-        console.log('Form submitted:', data);
+//         // Here you would typically send the data to a server
+//         console.log('Form submitted:', data);
         
-        // Show success message
-        alert('Thank you for your message! We will get back to you soon.');
-        this.reset();
-    });
-}
+//         // Show success message
+//         alert('Thank you for your message! We will get back to you soon.');
+//         this.reset();
+//     });
+// }
 
 // Add animation to feature cards on hover
 const featureCards = document.querySelectorAll('.feature-card');
@@ -135,10 +135,11 @@ function initThemeToggle() {
     // Check for saved theme preference or use preferred color scheme
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     // Apply saved theme or use system preference
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
         document.body.classList.add('dark-mode');
+
     }
     
     // Get all theme toggle buttons
@@ -242,7 +243,3 @@ style.textContent = `
 }
 `;
 document.head.appendChild(style);
-
-const darklight = document.getElementById("darkmode-lightmode")
-
-const currentcolor = document.body.background;

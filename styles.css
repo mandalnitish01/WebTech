@@ -483,6 +483,9 @@ body {
     color: #2c3e50;
     margin-bottom: 1.5rem;
 }
+.contact-info #contact-color{
+    color: black;
+}
 
 .contact-details {
     margin-top: 2rem;
@@ -553,6 +556,9 @@ body {
 
 .submit-button:hover {
     background: #2980b9;
+}
+#contact-color{
+    color: black;
 }
 
 /* Map Section */
@@ -1108,7 +1114,7 @@ footer {
 /* Dark Mode Styles */
 body.dark-mode {
   background-color: #1a1a1a;
-  color: #f0f0f0;
+  color: #949090;
 }
 
 body.dark-mode .navbar {
@@ -1132,6 +1138,9 @@ body.dark-mode .doctor-card {
   background: #2c2c2c;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   color: #f0f0f0;
+}
+body.dark-mode .contact-info p{
+    color: black;
 }
 
 body.dark-mode .feature-card h3,
